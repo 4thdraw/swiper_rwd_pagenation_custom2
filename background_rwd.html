@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .max-width{
+            padding: 0 1rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        /* 작은사이즈 분기점의 기준이 모바일 배너의 너비와 상관있다*/
+        #mainBanner{
+            background-image: url(./img/banner_mo_01.jpg);
+            background-repeat: no-repeat;
+            background-position: center -8vw;
+            height: calc(100vh - 0);
+            max-height:186vw; 
+            min-height:100vw;
+            background-size:100%;            
+        }
+
+        @media (min-width:1080px) {
+            /* 큰사이즈 */
+            #mainBanner{
+              background-image: url(./img/banner13_pc_.jpg);
+              height:800px;
+              max-height:none; 
+              min-height:auto;
+              background-size: auto 100%;              
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="mainBanner">
+        <div class="max-width">
+              <div class="banner_title">
+                 <h2>큰글씨</h2>
+                 <p>작은글씨</p>
+              </div>
+        </div>
+    </div>
+</body>
+</html>
