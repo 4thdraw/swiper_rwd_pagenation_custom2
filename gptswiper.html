@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swiper 11 + Bootstrap 5</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Swiper 11 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <style>
+    .swiper-slide {
+      background: #f0f0f0;
+      border: 1px solid #ccc;
+      text-align: center;
+      font-size: 1.25rem;
+      line-height: 200px;
+      height: 200px;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      color: #000;
+    }
+
+    .swiper-pagination-bullet {
+      background-color: #000;
+      opacity: 1;
+    }
+
+    .swiper-pagination-fraction {
+      color: #000;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container py-5" id="bby">
+    <div class="swiper mySwiper" >
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" data-eventnm="탄산">Slide 1</div>
+        <div class="swiper-slide" data-eventnm="이온">Slide 2</div>
+        <div class="swiper-slide" data-eventnm="생수">Slide 3</div>
+        <div class="swiper-slide" data-eventnm="청량음료">Slide 4</div>
+        <div class="swiper-slide" data-eventnm="50%">Slide 5</div>
+        <div class="swiper-slide" data-eventnm="탄산">Slide 6</div>
+        <div class="swiper-slide" data-eventnm="탄산">Slide 7</div>
+      </div>
+
+      <!-- 페이지네이션 -->
+      <div class="swiper-pagination"></div>
+
+      <!-- 네비게이션 -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+  </div>
+
+  <!-- Swiper 11 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <script>
+    
+    const swiper_bby = new Swiper('#bby .mySwiper', {
+      slidesPerView: 1.2,
+      spaceBetween: 20,    
+      loop: true,      
+      pagination: {
+            el: '#bby .swiper-pagination',
+            type: 'fraction',
+      },
+      navigation: {
+        nextEl: '#bby .swiper-button-next',
+        prevEl: '#bby .swiper-button-prev',
+      },
+
+      breakpoints: {
+        768: {
+          slidesPerView: 1.5,
+          centeredSlides: true,
+          pagination: {
+            el: '#bby .swiper-pagination',
+            type: 'fraction',
+          },
+        },
+        1025: {
+          slidesPerView: 5, 
+          pagination: {
+            el: '#bby .swiper-pagination',
+            type: 'bullets', // 버전에 따라 다름
+            clickable: true,
+            renderBullet: function (index, className) {
+                const label = this.slides[index].dataset.eventnm || `Slide ${index + 1}`;
+                return `<span class="${className}" title="${label}">${label}</span>`;
+            }
+
+          },
+        }
+      }
+    });
+    console.log(swiper_bby);
+  </script>
+</body>
+</html>
